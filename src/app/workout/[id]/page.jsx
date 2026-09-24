@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { HiOutlineArchiveBoxArrowDown } from "react-icons/hi2";
 import { IoSaveOutline } from "react-icons/io5";
+import WorkoutActions from "./workoutActions";
 
 const PromiseData = async () => {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
@@ -107,16 +108,7 @@ const WorkDetailPage = async ({ params }) => {
               </div>
             </div>
             <div className="flex gap-10 mt-5">
-              <button className="btn bg-[#CCFF00] text-black rounded-lg">
-                {" "}
-                <IoSaveOutline />
-                Add to today plan{" "}
-              </button>
-
-              <button className="btn text-white rounded-lg ">
-                {" "}
-                <HiOutlineArchiveBoxArrowDown /> Save for later
-              </button>
+              <WorkoutActions workout={workout} />
             </div>
           </div>
         </div>

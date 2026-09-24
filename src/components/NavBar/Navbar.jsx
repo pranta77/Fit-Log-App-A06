@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import logo from "@/app/assets/logo.png";
 import Link from "next/link";
+import { useFitLog } from "@/context/FitLogContext";
 
 const Links = (
   <>
@@ -10,11 +13,12 @@ const Links = (
     </li>
 
     <li>
-      <Link href="/plan">My Plan</Link>
+      <Link href="/my-plan">My Plan</Link>
     </li>
   </>
 );
 const Navbar = () => {
+    const { plan, saved } = useFitLog();
   return (
     <div className="container mx-auto">
       <div className="navbar bg-neutral shadow-sm">
@@ -55,9 +59,18 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{Links}</ul>
         </div>
-        <div className="navbar-end gap-5">
-          <a className="btn">Plan</a>
-          <a className="btn">Saved</a>
+        <div className="navbar-end gap-3">
+
+          {/* PLAN */}
+          <div className="rounded-full bg-[#C2F800] px-4 py-2 text-sm font-bold text-black">
+            Plan {plan.length}
+          </div>
+
+          {/* SAVED */}
+          <div className="rounded-full border border-[#C2F800] px-4 py-2 text-sm font-bold text-white">
+            Saved {saved.length}
+          </div>
+
         </div>
       </div>
     </div>
