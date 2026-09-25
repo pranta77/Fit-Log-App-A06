@@ -5,20 +5,33 @@ import React from "react";
 import logo from "@/app/assets/logo.png";
 import Link from "next/link";
 import { useFitLog } from "@/context/FitLogContext";
+import { usePathname } from "next/navigation";
 
-const Links = (
-  <>
-    <li className="text-[#C2F800] font-bold rounded-2xl bg-[#1A2312]">
-      <Link href="/workout">Workouts</Link>
-    </li>
-
-    <li>
-      <Link href="/my-plan">My Plan</Link>
-    </li>
-  </>
-);
 const Navbar = () => {
-    const { plan, saved } = useFitLog();
+  const { plan, saved } = useFitLog();
+  const pathname = usePathname();
+  const Links = (
+    <>
+      <li
+        className={
+          pathname === "/"
+            ? "rounded-2xl bg-[#1A2312] font-bold text-[#C2F800]"
+            : ""
+        }
+      >
+        <Link href="/">Workouts</Link>
+      </li>
+      <li
+        className={
+          pathname === "/my-plan"
+            ? "rounded-2xl bg-[#1A2312] font-bold text-[#C2F800]"
+            : ""
+        }
+      >
+        <Link href="/my-plan">My Plan</Link>
+      </li>
+    </>
+  );
   return (
     <div className="container mx-auto">
       <div className="navbar bg-neutral shadow-sm">
@@ -60,21 +73,20 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{Links}</ul>
         </div>
         <div className="navbar-end gap-3">
+          <Link href="/my-plan">
+            <div className="rounded-full bg-[#C2F800] px-4 py-2 text-sm font-bold text-black">
+              Plan {plan.length}
+            </div>
+          </Link>
 
-          {/* PLAN */}
-          <div className="rounded-full bg-[#C2F800] px-4 py-2 text-sm font-bold text-black">
-            Plan {plan.length}
-          </div>
-
-          {/* SAVED */}
-          <div className="rounded-full border border-[#C2F800] px-4 py-2 text-sm font-bold text-white">
-            Saved {saved.length}
-          </div>
-
+          <Link href="/my-plan">
+            <div className="rounded-full border border-[#C2F800] px-4 py-2 text-sm font-bold text-white">
+              Saved {saved.length}
+            </div>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
-
 export default Navbar;

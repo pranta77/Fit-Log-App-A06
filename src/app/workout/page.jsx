@@ -6,12 +6,10 @@ const PromiseData = async () => {
   return data;
   //  console.log(data);
 };
-
-
 const WorkoutPage = async () => {
   const worksData = await PromiseData();
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto">
       <div>
         <h1 className="text-3xl font-bold">THE LIBRARY</h1>
         <p className=" text-[#9CA3AF] text-sm mt-2">

@@ -4,7 +4,7 @@ import Navbar from "@/components/NavBar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import { FitLogProvider } from "@/context/FitLogContext";
 import { ToastContainer } from "react-toastify";
-
+import Banner from "@/components/Banner/Banner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </FitLogProvider>
-        <ToastContainer/>
+        <ToastContainer />
       </body>
     </html>
   );

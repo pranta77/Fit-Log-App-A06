@@ -15,7 +15,6 @@ export const FitLogProvider = ({ children }) => {
       if (alreadyExists) {
         return prev;
       }
-
       return [...prev, workout];
     });
   };
@@ -27,9 +26,26 @@ export const FitLogProvider = ({ children }) => {
       if (alreadyExists) {
         return prev;
       }
-
       return [...prev, workout];
     });
+  };
+
+  // Remove workout from today's plan
+  const removeFromPlan = (id) => {
+    setPlan((previousPlan) => previousPlan.filter((item) => item.id !== id));
+  };
+  // Remove workout from saved
+  const removeFromSaved = (id) => {
+    setSaved((previousSaved) => previousSaved.filter((item) => item.id !== id));
+  };
+
+  // Mark workout as done
+  const markAsDone = (id) => {
+    setPlan((previousPlan) =>
+      previousPlan.map((item) =>
+        item.id === id ? { ...item, completed: true } : item,
+      ),
+    );
   };
 
   return (
@@ -39,6 +55,9 @@ export const FitLogProvider = ({ children }) => {
         saved,
         addToPlan,
         saveForLater,
+        removeFromPlan,
+        markAsDone,
+        removeFromSaved,
       }}
     >
       {children}

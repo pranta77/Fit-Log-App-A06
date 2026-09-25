@@ -6,7 +6,10 @@ const page = () => {
   return (
     <div>
       <Banner/>
-      <WorkoutPage/>
+       <section id="library">
+        <WorkoutPage/>
+      </section>
+      
     </div>
   );
 };

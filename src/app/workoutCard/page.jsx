@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import Image from "next/image";
 import Link from "next/link";
 import { FaStar } from "react-icons/fa";
@@ -7,7 +7,7 @@ import { IoTimeOutline } from "react-icons/io5";
 
 const WorkoutCard = ({ workout }) => {
   return (
-    <Link href={`/workout/${workout.id}`} >
+    <Link href={`/workout/${workout.id}`}>
       <div className="overflow-hidden rounded-3xl border border-[#20242E] bg-[#20242E]">
         <Image
           src={workout.image}
@@ -34,6 +34,7 @@ const WorkoutCard = ({ workout }) => {
           </h2>
           <p className="mt-2 text-[#9297A1]">{workout.equipment}</p>
           <div className="divider" />
+
           <div className="flex justify-between text-[#9297A1]">
             <div className="flex items-center gap-1">
               <IoTimeOutline />

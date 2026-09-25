@@ -1,33 +1,40 @@
 import Image from "next/image";
-import React from "react";
 import banner from "@/app/assets/banner.png";
+import { FaArrowDown } from "react-icons/fa";
 
 const Banner = () => {
   return (
     <div className="container mx-auto my-10">
-      <div className="hero bg-base-200 rounded-lg shadow-lg p-10 ">
-        <div className="hero-content flex-col lg:flex-row-reverse ">
+      <div className="hero rounded-lg bg-base-200 p-10 shadow-lg">
+        <div className="hero-content flex-col lg:flex-row-reverse">
           <Image
-            alt="banner"
+            alt="FitLog workout banner"
             src={banner}
-            className="max-w-sm rounded-lg w-full"
+            className="w-full max-w-sm rounded-lg"
           />
           <div>
-            <p className="font-semibold text-[#C2F800] text-center lg:text-left my-5">
+            <p className="my-5 text-center font-semibold text-[#C2F800] lg:text-left">
               WORKOUT LIBRARY
             </p>
-            <h1 className="text-3xl lg:text-5xl font-bold text-center lg:text-left">
+
+            <h1 className="text-center text-3xl font-bold lg:text-left lg:text-5xl">
               TRAIN WITH INTENT. LOG EVERY SET.
             </h1>
+
             <p className="py-6 text-center lg:text-left">
-              FitLog is a dark, no-nonsense gym companion: pick a lift, lock it{" "}
-              <br />
-              into today s plan, and watch the week s work add up.
+              FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
+              into today plan, and watch the weeks work add up.
             </p>
-            <div className="flex justify-center sm:justify-center lg:justify-start">
-              <button className="btn  bg-[#C2F800] text-[#1A2312] hover:bg-[#1A2312] hover:text-[#C2F800]">
+
+            {/* CTA */}
+            <div className="flex justify-center lg:justify-start">
+              <a
+                href="#library"
+                className="btn flex items-center gap-2 bg-[#C2F800] text-[#1A2312] hover:bg-[#1A2312] hover:text-[#C2F800]"
+              >
                 BROWSE WORKOUTS
-              </button>
+                <FaArrowDown />
+              </a>
             </div>
           </div>
         </div>
