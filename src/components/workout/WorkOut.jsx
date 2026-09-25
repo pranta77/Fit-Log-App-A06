@@ -1,4 +1,5 @@
-import WorkoutCard from "../workoutCard/page";
+import WorkoutCard from "@/components/workoutCard/WorkOutCard";
+
 
 const PromiseData = async () => {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
@@ -6,7 +7,7 @@ const PromiseData = async () => {
   return data;
   //  console.log(data);
 };
-const WorkoutPage = async () => {
+const WorkOut = async () => {
   const worksData = await PromiseData();
   return (
     <div className="container mx-auto">
@@ -25,4 +26,4 @@ const WorkoutPage = async () => {
   );
 };
 
-export default WorkoutPage;
+export default WorkOut;

@@ -1,15 +1,14 @@
 import Banner from '@/components/Banner/Banner';
 import React from 'react';
-import WorkoutPage from './workout/page';
+import WorkOut from '@/components/workout/WorkOut';
 
 const page = () => {
   return (
     <div>
       <Banner/>
        <section id="library">
-        <WorkoutPage/>
+        <WorkOut/>
       </section>
-      
     </div>
   );
 };

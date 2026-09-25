@@ -10,13 +10,8 @@ import { MdCancelPresentation } from "react-icons/md";
 import { toast } from "react-toastify";
 
 const MyPlan = () => {
-  const {
-    plan,
-    saved,
-    removeFromPlan,
-    removeFromSaved,
-    markAsDone,
-  } = useFitLog();
+  const { plan, saved, removeFromPlan, removeFromSaved, markAsDone } =
+    useFitLog();
 
   const [activeTab, setActiveTab] = useState("plan");
   const [sortBy, setSortBy] = useState("duration");
@@ -34,14 +29,11 @@ const MyPlan = () => {
   // Plan statistics
   const exercises = plan.length;
 
-  const minutes = plan.reduce(
-    (total, workout) => total + workout.duration,
-    0
-  );
+  const minutes = plan.reduce((total, workout) => total + workout.duration, 0);
 
   const calories = plan.reduce(
     (total, workout) => total + workout.caloriesBurned,
-    0
+    0,
   );
 
   // Remove workout
@@ -83,12 +75,9 @@ const MyPlan = () => {
 
   return (
     <div className="container mx-auto space-y-8 py-5">
-
       {/* Header */}
       <div className="mt-10">
-        <h2 className="text-3xl font-bold text-white">
-          MY PLAN
-        </h2>
+        <h2 className="text-3xl font-bold text-white">MY PLAN</h2>
 
         <p className="mt-2 text-[#9CA3AF]">
           Cap of five lifts for today. Finish them, then load more.
@@ -97,44 +86,30 @@ const MyPlan = () => {
 
       {/* Statistics */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-
         {/* Exercises */}
         <div className="rounded-2xl border border-[#292D35] bg-[#15171C] p-5">
-          <p className="text-sm uppercase text-[#9CA3AF]">
-            Exercises
-          </p>
+          <p className="text-sm uppercase text-[#9CA3AF]">Exercises</p>
 
-          <h3 className="mt-2 text-3xl font-bold text-white">
-            {exercises}
-          </h3>
+          <h3 className="mt-2 text-3xl font-bold text-white">{exercises}</h3>
         </div>
 
         {/* Minutes */}
         <div className="rounded-2xl border border-[#292D35] bg-[#15171C] p-5">
-          <p className="text-sm uppercase text-[#9CA3AF]">
-            Minutes
-          </p>
+          <p className="text-sm uppercase text-[#9CA3AF]">Minutes</p>
 
-          <h3 className="mt-2 text-3xl font-bold text-white">
-            {minutes}
-          </h3>
+          <h3 className="mt-2 text-3xl font-bold text-white">{minutes}</h3>
         </div>
 
         {/* Calories */}
         <div className="rounded-2xl border border-[#292D35] bg-[#15171C] p-5">
-          <p className="text-sm uppercase text-[#9CA3AF]">
-            Calories
-          </p>
+          <p className="text-sm uppercase text-[#9CA3AF]">Calories</p>
 
-          <h3 className="mt-2 text-3xl font-bold text-white">
-            {calories}
-          </h3>
+          <h3 className="mt-2 text-3xl font-bold text-white">{calories}</h3>
         </div>
       </div>
 
       {/* Tabs */}
       <div className="flex gap-3 border-b border-[#292D35]">
-
         <button
           onClick={() => setActiveTab("plan")}
           className={`px-5 py-3 text-sm font-bold ${
@@ -156,51 +131,37 @@ const MyPlan = () => {
         >
           Saved
         </button>
-
       </div>
 
       {/* Sort Dropdown */}
       <div className="flex justify-end">
         <div className="relative">
-
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className="appearance-none rounded-lg border border-[#292D35] bg-[#15171C] px-4 py-3 pr-10 text-sm font-bold text-white outline-none"
           >
-            <option value="duration">
-              Sort By: Duration
-            </option>
+            <option value="duration">Sort By: Duration</option>
 
-            <option value="calories">
-              Sort By: Calories
-            </option>
+            <option value="calories">Sort By: Calories</option>
 
-            <option value="rating">
-              Sort By: Rating
-            </option>
+            <option value="rating">Sort By: Rating</option>
           </select>
 
           <FaChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#9CA3AF]" />
-
         </div>
       </div>
 
       {/* Workout List */}
       <div className="space-y-5">
-
         {/* Loading */}
         {loading ? (
-          <div className="flex min-h-[300px] items-center justify-center">
-            <p className="text-lg text-[#9CA3AF]">
-              Loading workouts…
-            </p>
+          <div className="flex min-h-75 items-center justify-center">
+            <p className="text-lg text-[#9CA3AF]">Loading workouts…</p>
           </div>
         ) : workouts.length === 0 ? (
-
           /* Empty State */
           <div className="flex flex-col items-center justify-center py-20 text-center">
-
             <h2 className="text-2xl font-extrabold text-white">
               NOTHING HERE YET
             </h2>
@@ -215,18 +176,14 @@ const MyPlan = () => {
             >
               Go to workouts
             </Link>
-
           </div>
-
         ) : (
-
           /* Workout Cards */
           workouts.map((workout) => (
             <div
               key={workout.id}
               className="flex flex-col gap-5 rounded-2xl border border-[#292D35] bg-[#15171C] p-5 md:flex-row"
             >
-
               {/* Image */}
               <Image
                 width={500}
@@ -238,20 +195,16 @@ const MyPlan = () => {
 
               {/* Workout Information */}
               <div className="flex flex-1 flex-col justify-between">
-
                 <div>
                   <h3 className="text-xl font-extrabold uppercase text-white">
                     {workout.name}
                   </h3>
 
-                  <p className="mt-5 text-[#8A92A0]">
-                    {workout.equipment}
-                  </p>
+                  <p className="mt-5 text-[#8A92A0]">{workout.equipment}</p>
                 </div>
 
                 {/* Stats */}
                 <div className="mt-5 flex flex-wrap gap-5 text-sm text-[#9CA3AF]">
-
                   <span className="flex items-center gap-1">
                     <IoTimeOutline />
                     {workout.duration} min
@@ -266,13 +219,11 @@ const MyPlan = () => {
                     <FaStar />
                     {workout.rating}
                   </span>
-
                 </div>
               </div>
 
               {/* Buttons */}
               <div className="flex flex-wrap items-center gap-3">
-
                 {/* View Details */}
                 <Link
                   href={`/workout/${workout.id}`}
@@ -294,9 +245,7 @@ const MyPlan = () => {
                   >
                     <FaCheck />
 
-                    {workout.completed
-                      ? "Done"
-                      : "Mark as Done"}
+                    {workout.completed ? "Done" : "Mark as Done"}
                   </button>
                 )}
 
@@ -307,11 +256,9 @@ const MyPlan = () => {
                 >
                   <MdCancelPresentation />
                 </button>
-
               </div>
             </div>
           ))
-
         )}
       </div>
     </div>

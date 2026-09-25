@@ -6,6 +6,8 @@ import { GoDot } from "react-icons/go";
 import { IoTimeOutline } from "react-icons/io5";
 
 const WorkoutCard = ({ workout }) => {
+  
+  
   return (
     <Link href={`/workout/${workout.id}`}>
       <div className="overflow-hidden rounded-3xl border border-[#20242E] bg-[#20242E]">
